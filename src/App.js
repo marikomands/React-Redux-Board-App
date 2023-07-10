@@ -6,6 +6,7 @@ import { addPost, deletePost } from "./features/Posts";
 
 function App() {
   const [name, setName] = useState("");
+  console.log("🚀 ~ App ~ name:", name);
   const [content, setContent] = useState("");
 
   const postList = useSelector((state) => state.posts.value);
@@ -21,6 +22,8 @@ function App() {
         content: content,
       })
     );
+    setName("");
+    setContent("");
   };
 
   return (
@@ -33,11 +36,13 @@ function App() {
           type="text"
           placeholder="Name"
           onChange={(e) => setName(e.target.value)}
+          value={name}
         />
         <input
           type="text"
           placeholder="Contents"
           onChange={(e) => setContent(e.target.value)}
+          value={content}
         />
         <button onClick={() => handleClick()}>Post</button>
         <hr />
